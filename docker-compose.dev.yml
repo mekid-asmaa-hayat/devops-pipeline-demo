@@ -1,0 +1,14 @@
+version: '3.9'
+
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+services:
+  api:
+    build:
+      target: test
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./src:/app/src:ro
+    command: npm run dev
+    ports:
+      - "3000:3000"
